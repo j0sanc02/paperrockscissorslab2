@@ -11,6 +11,26 @@
     <TextView
         android:text="@string/hello_world"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:id="@+id/textView" />
+
+     <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageRock"
+        android:src="@drawable/rock"/>
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/imagePaper"
+        android:src="@drawable/paper"
+        android:layout_below="@+id/imageRock"/>
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageScissor"
+        android:src="@drawable/scissors"
+        android:layout_below="@+id/imageRock"/>
+
 
 </RelativeLayout>
