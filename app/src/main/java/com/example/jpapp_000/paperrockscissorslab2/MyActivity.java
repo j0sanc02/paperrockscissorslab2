@@ -1,17 +1,30 @@
 package com.example.jpapp_000.paperrockscissorslab2;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.Toast;
 
 
-public class MyActivity extends Activity {
+public class MyActivity extends Activity implements View.OnLongClickListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my);
+        ImageView rockButton = (ImageView)findViewById(R.id.imageRock);
+        rockButton.setOnClickListener((View.OnClickListener) this);
+
+
+
+        ImageView paperButton = (ImageView)findViewById(R.id.imagePaper);
+        paperButton.setOnClickListener((View.OnClickListener) this);
+        ImageView scissorsButton = (ImageView)findViewById(R.id.imageScissor);
+        paperButton.setOnClickListener((View.OnClickListener) this);
     }
 
 
@@ -32,5 +45,32 @@ public class MyActivity extends Activity {
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public boolean onLongClick(View view) {
+
+        if (view.getId()== R.id.imageRock) {
+            showMessage(view, "You clicked rock");
+        }
+        else if (view.getId()==R.id.imagePaper){
+                showMessage(view, "You click Paper");
+
+            }
+        else{
+                showMessage(view, "You click Scissors");
+            }
+
+
+        return false;
+    }
+
+    Intent intent = new Intent (this, WinLoseActivity.class);
+    intent.putExtra(RockpaperscissorsConstant, view.getId());
+    startActivity(intent);
+
+    private void showMessage(View view, String message) {
+        Toast toast = Toast.makeText(view.getContext(), message, Toast.LENGTH_SHORT);
+        toast.show();
     }
 }
